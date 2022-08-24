@@ -1,7 +1,7 @@
-.grid-container {
+#grid-container {
     display: inline-grid;
     background-color: lightgrey;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(9,auto);
     padding: 1em;
 }
 
