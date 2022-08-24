@@ -46,7 +46,7 @@ function setMark(id, value){
             thisId = document.getElementById(id);
             thisId.innerHTML = "X";
             thisId.value = 1;
-            checkForVictory(thisId.id);
+            checkForVictory(thisId.id, thisId.value);
             vuoro = 2;
             pelivuorot--;
             break;
@@ -55,7 +55,7 @@ function setMark(id, value){
             thisId = document.getElementById(id);
             thisId.innerHTML = "O";
             thisId.value = 2;
-            checkForVictory(thisId.id);
+            checkForVictory(thisId.id, thisId.value);
             vuoro = 1;
             pelivuorot--;
             break;
@@ -69,11 +69,47 @@ function setMark(id, value){
     }
 }
 
-let victoryPoints = 1;
-
-function checkForVictory(x){
+function checkForVictory(x, pair){
+    //find current index
     let index = checkTableLocation(x);
     console.log(index);
+    let c_row = index[0];
+    let c_col = index[1];
+    console.log(c_row, c_col);
+
+    //define surroundings of current index
+    let distance = 1;
+
+    let topLeft = board[c_row-distance][c_col-distance];
+    let top = board[c_row-distance][c_col];
+    let topRight = board[c_row-distance][c_col+distance];
+    let left = board[c_row][c_col-distance];
+    let right = board[c_row][c_col+distance];
+    let bottomLeft = board[c_row+distance][c_col-distance];
+    let bottom = board[c_row+distance][c_col];
+    let bottomRight = board[c_row+distance][c_col+distance];
+
+    console.log(topLeft);
+    console.log(top);
+    console.log(topRight);
+
+    console.log(left);
+    console.log(right);
+
+    console.log(bottomLeft);
+    console.log(bottom);
+    console.log(bottomRight);
+
+}
+
+function checkDirForValue(dir, value){
+    while(board[c_row][c_col] == pair){
+        if(dir == pair){
+            c_row = dir[0];
+            c_col = dir[1];
+            checkDirForValue(dir, value);
+        }
+    }
 }
 
 function checkTableLocation(pos){
