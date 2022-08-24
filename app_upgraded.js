@@ -23,9 +23,8 @@ function boardToDivs(board){
             newElement.className = "grid-item"; 
             newElement.innerHTML = "&#8193"; 
             newElement.value = 0; 
-            newElement.addEventListener("click", () => {asetaMerkki(newElement.id, newElement.value)});
+            newElement.addEventListener("click", () => {setMark(newElement.id, newElement.value)});
             parentElement.appendChild(newElement);
-            
         }
     }
 }
@@ -33,14 +32,14 @@ function boardToDivs(board){
 let board;
 
 function generateGame(){
-    board = createBoard(9,9);
+    board = createBoard(boardSize,boardSize);
     boardToDivs(board);
     console.table(board);
 }
 
 let pelivuorot = boardSize**2, vuoro = 2;
 
-function asetaMerkki(id, value){
+function setMark(id, value){
 
     switch(true){
         case ( vuoro === 1 && value === "0"):
@@ -73,27 +72,19 @@ function asetaMerkki(id, value){
 let victoryPoints = 1;
 
 function checkForVictory(x){
-    checkTableLocation(x);
-    let i = 4;
-    try {
-        if(x - i >= 0){
-            if(x - i == "X"){
-                victoryPoints++;
-                x = x - i;
-            }
-            if(victoryPoints == 3){
-                alert("Victory!");
-            }
-        }
-    } catch (error) {
-        return false;
-    }
+    let index = checkTableLocation(x);
+    console.log(index);
 }
 
 function checkTableLocation(pos){
-    pos = parseInt(pos);
-    let index = board.indexOf(pos);
-    console.log(typeof index, index, typeof pos, pos);
+    for(let row = 0; row < board.length; row++){
+        for(let col = 0; col < board[row].length; col++){
+            if(pos == board[row][col]){
+                console.log("Found it!", board[row][col]);
+                return [row,col];
+            }
+        }
+    }
 }
 
 
