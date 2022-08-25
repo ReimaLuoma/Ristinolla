@@ -80,34 +80,56 @@ function checkForVictory(x, pair){
     //define surroundings of current index
     let distance = 1;
 
-    let topLeft = board[c_row-distance][c_col-distance];
-    let top = board[c_row-distance][c_col];
-    let topRight = board[c_row-distance][c_col+distance];
-    let left = board[c_row][c_col-distance];
-    let right = board[c_row][c_col+distance];
-    let bottomLeft = board[c_row+distance][c_col-distance];
-    let bottom = board[c_row+distance][c_col];
-    let bottomRight = board[c_row+distance][c_col+distance];
+    
 
-    console.log(topLeft);
-    console.log(top);
-    console.log(topRight);
+    try {
+        let topLeft = document.getElementById(board[c_row-distance][c_col-distance]).value;
+        let top = document.getElementById(board[c_row-distance][c_col]).value;
+        let topRight = document.getElementById(board[c_row-distance][c_col+distance]).value;
+        let left = document.getElementById(board[c_row][c_col-distance]).value;
+        let right = document.getElementById(board[c_row][c_col+distance]).value;
+        let bottomLeft = document.getElementById(board[c_row+distance][c_col-distance]).value;
+        let bottom = document.getElementById(board[c_row+distance][c_col]).value;
+        let bottomRight = document.getElementById(board[c_row+distance][c_col+distance]).value;
+        
+        console.log(topLeft, top, topRight);
+        console.log(left, "X", right);
+        console.log(bottomLeft, bottom, bottomRight);
+    } catch {
+        //top
+        if(c_row - distance < 0){
+            console.log("test top");
+            //right
+            if(c_col + distance > 8){
+                console.log("test right");
+            }
+            //left
+            if(c_col - distance < 0){
+                console.log("test left");
+            }
+        }
 
-    console.log(left);
-    console.log(right);
+        //bottom
+        if(c_row + distance > 8){
+            console.log("test bottom");
+            //right
+            if(c_col + distance > 8){
+                console.log("test right");
+            }
+            //left
+            if(c_col - distance < 0){
+                console.log("test left");
+            }
+        }
 
-    console.log(bottomLeft);
-    console.log(bottom);
-    console.log(bottomRight);
+        //left
+        if(c_col - distance < 0){
+            console.log("test left");
+        }
 
-}
-
-function checkDirForValue(dir, value){
-    while(board[c_row][c_col] == pair){
-        if(dir == pair){
-            c_row = dir[0];
-            c_col = dir[1];
-            checkDirForValue(dir, value);
+        //right
+        if(c_col + distance > 8){
+            console.log("test right");
         }
     }
 }
