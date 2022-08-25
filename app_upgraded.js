@@ -70,15 +70,25 @@ function setMark(id, value){
 }
 
 function checkForVictory(x, pair){
-    //find current index
+
+    //REFACTOR
+
+    //muodosta objekti: row, col, value, id, ympäristötarkistus-metodi
+    //tarkista ympäröivät voittoehto - 1 säteellä
+    
+    //find current location data
     let index = checkTableLocation(x);
     console.log(index);
     let c_row = index[0];
     let c_col = index[1];
     console.log(c_row, c_col);
 
+    //----CONTINUE HERE----
+
+    /*
     //define surroundings of current index
     let distance = 1;
+    let checkItems =[];
 
     try {
         let topLeft = document.getElementById(board[c_row-distance][c_col-distance]).value;
@@ -93,6 +103,8 @@ function checkForVictory(x, pair){
         console.log(topLeft, top, topRight);
         console.log(left, "X", right);
         console.log(bottomLeft, bottom, bottomRight);
+
+        checkItems.push(topLeft,top, topRight,right,bottomRight,bottom,bottomLeft,left);
     } catch {
         //top
         if(c_row - distance < 0){
@@ -192,16 +204,15 @@ function checkForVictory(x, pair){
             console.log(bottomLeft, bottom);
         }
     }
-/*
-    let checkItems = [topLeft,top,topRight,right,bottomRight,bottom,bottomLeft,left];
+    console.log(checkItems);
     let victoryPoints = 1;
 
-    checkItems.forEach(element => {
-        if(element == pair){
+    for(let item = 0; item <checkItems.length; item++){
+        if(checkItems[item] == pair){
             victoryPoints++;
-
+            
         }
-    });
+    }
     */
 }
 
