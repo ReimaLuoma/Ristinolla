@@ -80,8 +80,6 @@ function checkForVictory(x, pair){
     //define surroundings of current index
     let distance = 1;
 
-    
-
     try {
         let topLeft = document.getElementById(board[c_row-distance][c_col-distance]).value;
         let top = document.getElementById(board[c_row-distance][c_col]).value;
@@ -102,36 +100,109 @@ function checkForVictory(x, pair){
             //right
             if(c_col + distance > 8){
                 console.log("test right");
+                let left = document.getElementById(board[c_row][c_col-distance]).value;
+                let bottomLeft = document.getElementById(board[c_row+distance][c_col-distance]).value;
+                let bottom = document.getElementById(board[c_row+distance][c_col]).value;
+
+                console.log(left, "X");
+                console.log(bottomLeft, bottom);
             }
             //left
-            if(c_col - distance < 0){
+            else if(c_col - distance < 0){
                 console.log("test left");
+                let right = document.getElementById(board[c_row][c_col+distance]).value;
+                let bottomRight = document.getElementById(board[c_row+distance][c_col+distance]).value;
+                let bottom = document.getElementById(board[c_row+distance][c_col]).value;
+
+                console.log("X", right);
+                console.log(bottom, bottomRight);
+            }
+            else{
+                let left = document.getElementById(board[c_row][c_col-distance]).value;
+                let right = document.getElementById(board[c_row][c_col+distance]).value;
+                let bottomLeft = document.getElementById(board[c_row+distance][c_col-distance]).value;
+                let bottom = document.getElementById(board[c_row+distance][c_col]).value;
+                let bottomRight = document.getElementById(board[c_row+distance][c_col+distance]).value;
+
+                console.log(left, "X", right);
+                console.log(bottomLeft, bottom, bottomRight);
             }
         }
 
         //bottom
-        if(c_row + distance > 8){
+        else if(c_row + distance > 8){
             console.log("test bottom");
             //right
             if(c_col + distance > 8){
                 console.log("test right");
+                let topLeft = document.getElementById(board[c_row-distance][c_col-distance]).value;
+                let top = document.getElementById(board[c_row-distance][c_col]).value;
+                let left = document.getElementById(board[c_row][c_col-distance]).value;
+
+                console.log(topLeft, top);
+                console.log(left, "X");
             }
             //left
-            if(c_col - distance < 0){
+            else if(c_col - distance < 0){
                 console.log("test left");
+                let top = document.getElementById(board[c_row-distance][c_col]).value;
+                let topRight = document.getElementById(board[c_row-distance][c_col+distance]).value;
+                let right = document.getElementById(board[c_row][c_col+distance]).value;
+
+                console.log(top, topRight);
+                console.log("X", right);
+            }
+            else{
+                let topLeft = document.getElementById(board[c_row-distance][c_col-distance]).value;
+                let top = document.getElementById(board[c_row-distance][c_col]).value;
+                let topRight = document.getElementById(board[c_row-distance][c_col+distance]).value;
+                let left = document.getElementById(board[c_row][c_col-distance]).value;
+                let right = document.getElementById(board[c_row][c_col+distance]).value;
+
+                console.log(topLeft, top, topRight);
+                console.log(left, "X", right);
             }
         }
 
         //left
-        if(c_col - distance < 0){
+        else if(c_col - distance < 0){
             console.log("test left");
+            let top = document.getElementById(board[c_row-distance][c_col]).value;
+            let topRight = document.getElementById(board[c_row-distance][c_col+distance]).value;
+            let right = document.getElementById(board[c_row][c_col+distance]).value;
+            let bottom = document.getElementById(board[c_row+distance][c_col]).value;
+            let bottomRight = document.getElementById(board[c_row+distance][c_col+distance]).value;
+
+            console.log(top, topRight);
+            console.log("X", right);
+            console.log(bottom, bottomRight);
         }
 
         //right
-        if(c_col + distance > 8){
+        else if(c_col + distance > 8){
             console.log("test right");
+            let topLeft = document.getElementById(board[c_row-distance][c_col-distance]).value;
+            let top = document.getElementById(board[c_row-distance][c_col]).value;
+            let left = document.getElementById(board[c_row][c_col-distance]).value;
+            let bottomLeft = document.getElementById(board[c_row+distance][c_col-distance]).value;
+            let bottom = document.getElementById(board[c_row+distance][c_col]).value;
+
+            console.log(topLeft, top);
+            console.log(left, "X");
+            console.log(bottomLeft, bottom);
         }
     }
+/*
+    let checkItems = [topLeft,top,topRight,right,bottomRight,bottom,bottomLeft,left];
+    let victoryPoints = 1;
+
+    checkItems.forEach(element => {
+        if(element == pair){
+            victoryPoints++;
+
+        }
+    });
+    */
 }
 
 function checkTableLocation(pos){
