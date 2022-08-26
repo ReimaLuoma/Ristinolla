@@ -16,19 +16,20 @@ export default class CellObject{
     }
 
     checkVerticalLineForMatches(){
-        let victoryPoints;
+        let victoryPoints = 0;
         //TOP
-        for(let step = 0; step < this.distance; step++){
+        for(let step = 1; step < this.distance; step++){
             if(this.row - step >= 0 && document.getElementById(this.board[this.row - step][this.col]).value == this.value){
                 victoryPoints++;
             }
         }
         //BOTTOM
-        for(let step = 0; step < this.distance; step++){
+        for(let step = 1; step < this.distance; step++){
             if(this.row + step <= 8 && document.getElementById(this.board[this.row + step][this.col]).value == this.value){
                 victoryPoints++;
             }
         }
+        console.log(victoryPoints);
         this.checkVictoryPoints(victoryPoints);
         victoryPoints = 0;
     }
@@ -36,13 +37,13 @@ export default class CellObject{
     checkHorizontalLineForMatches(){
         let victoryPoints;
         //LEFT
-        for(let step = 0; step < this.distance; step++){
+        for(let step = 1; step < this.distance; step++){
             if(this.col - step >= 0 && document.getElementById(this.board[this.row][this.col - step]).value == this.value){
                 victoryPoints++;
             }
         }
         //RIGHT
-        for(let step = 0; step < this.distance; step++){
+        for(let step = 1; step < this.distance; step++){
             if(this.col + step <= 8 && document.getElementById(this.board[this.row][this.col + step]).value == this.value){
                 victoryPoints++;
             }
@@ -54,13 +55,13 @@ export default class CellObject{
     checkFirstDiagonalLineForMatches(){
         let victoryPoints;
         //TOP-RIGHT
-        for(let step = 0; step < this.distance; step++){
+        for(let step = 1; step < this.distance; step++){
             if(this.row - step >= 0 && this.col + step <= 8 && document.getElementById(this.board[this.row - step][this.col + step]).value == this.value){
                 victoryPoints++;
             }
         }
         //BOTTOM-LEFT
-        for(let step = 0; step < this.distance; step++){
+        for(let step = 1; step < this.distance; step++){
             if(this.row + step <= 8 && this.col - step >= 0 && document.getElementById(this.board[this.row + step][this.col - step]).value == this.value){
                 victoryPoints++;
             }
@@ -72,13 +73,13 @@ export default class CellObject{
     checkSecondDiagonalLineForMatches(){
         let victoryPoints;
         //BOTTOM-RIGHT
-        for(let step = 0; step < this.distance; step++){
+        for(let step = 1; step < this.distance; step++){
             if(this.row + step <= 8 && this.col + step <= 8 && document.getElementById(this.board[this.row + step][this.col + step]).value == this.value){
                 victoryPoints++;
             }
         }
         //TOP-LEFT
-        for(let step = 0; step < this.distance; step++){
+        for(let step = 1; step < this.distance; step++){
             if(this.row - step >= 0 && this.col - step >= 0 && document.getElementById(this.board[this.row - step][this.col - step]).value == this.value){
                 victoryPoints++;
             }
@@ -88,7 +89,7 @@ export default class CellObject{
     }
 
     checkVictoryPoints(x){
-        if(x >= 3){
+        if(x >= 2){
             alert("Victory!");
         }
     }

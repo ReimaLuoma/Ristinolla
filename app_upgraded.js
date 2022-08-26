@@ -5,7 +5,7 @@ addEventListener('DOMContentLoaded', (event) => {
 });
 
 let boardSize = 9;
-let distance = 2;
+let distance = 4;
 let num = 1;
 let board;
 let gameturns = boardSize**2, turn = 2;
