@@ -1,5 +1,9 @@
 import CellObject from './Class_cellObject.js';
 
+addEventListener('DOMContentLoaded', (event) => {
+    generateGame();
+});
+
 let boardSize = 9;
 let distance = 2;
 let num = 1;
@@ -39,10 +43,9 @@ function generateGame(){
 }
 
 function setMark(id, value){
-
+    let thisId = document.getElementById(id);
     switch(true){
         case ( turn === 1 && value === "0"):
-            thisId = document.getElementById(id);
             thisId.innerHTML = "X";
             thisId.value = 1;
             checkForVictory(thisId.id, thisId.value);
@@ -51,7 +54,6 @@ function setMark(id, value){
             break;
 
         case ( turn === 2 && value === "0"):
-            thisId = document.getElementById(id);
             thisId.innerHTML = "O";
             thisId.value = 2;
             checkForVictory(thisId.id, thisId.value);
@@ -73,7 +75,7 @@ function checkForVictory(x, pair){
     let index = checkTableLocation(x);
     let c_row = index[0];
     let c_col = index[1];
-    let cell = new CellObject(c_row, c_col, pair, x, distance);
+    let cell = new CellObject(c_row, c_col, pair, x, distance, board);
     cell.findMatchingValues();
 }
 
