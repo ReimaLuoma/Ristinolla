@@ -1,4 +1,4 @@
-import Class_cellObject from 'Class_cellObject';
+import CellObject from './Class_cellObject.js';
 
 let boardSize = 9;
 let distance = 2;
@@ -73,7 +73,7 @@ function checkForVictory(x, pair){
     let index = checkTableLocation(x);
     let c_row = index[0];
     let c_col = index[1];
-    let cell = new Class_cellObject(c_row, c_col, pair, x, distance);
+    let cell = new CellObject(c_row, c_col, pair, x, distance);
     cell.findMatchingValues();
 }
 
